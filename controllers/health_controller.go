@@ -11,5 +11,5 @@ type healthController struct{}
 var HealthController HealthControllerI = &healthController{}
 
 func (h *healthController) IsRunning(ctx *gin.Context) {
-	ctx.JSON(200, gin.H{"message": "Server is running"})
+	ctx.JSON(200, gin.H{"message": "Server is running but on new device"})
 }
