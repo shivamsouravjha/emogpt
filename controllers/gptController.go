@@ -19,6 +19,7 @@ var GptController GptControllerI = &gptController{}
 func (s *gptController) SendMessage(ctx *gin.Context) {
 	var requestBody struct {
 		Message string `json:"message"`
+		Mood    string `json:"mood"`
 	}
 
 	if err := ctx.ShouldBindJSON(&requestBody); err != nil {
@@ -27,7 +28,7 @@ func (s *gptController) SendMessage(ctx *gin.Context) {
 	}
 	message := requestBody.Message
 
-	promptBuilder, _ := services.NewPromptBuilder(message)
+	promptBuilder, _ := services.NewPromptBuilder(message, requestBody.Mood)
 
 	prompt, _ := promptBuilder.BuildPrompt("meta")
 	av, _ := helpers.GenerateChat(ctx, *prompt)

@@ -53,7 +53,6 @@ func GenerateChat(ctx context.Context, prompt types.Prompt) (string, error) {
 	}
 
 	chat, err := unmarshalYaml(response)
-
 	if err != nil {
 		zap.L().Error("Error unmarshalling yaml", zap.Error(err))
 		return "", err
@@ -151,7 +150,6 @@ func CallAi(ctx context.Context, completionParams CompletionParams, aiRequest AI
 	}
 
 	queryParams := "?api-version=2024-08-01-preview"
-
 	req, err := http.NewRequestWithContext(ctx, "POST", apiBaseURL+"/chat/completions"+queryParams, bytes.NewBuffer(requestBody))
 	if err != nil {
 		zap.L().Error("Error creating request", zap.Error(err))

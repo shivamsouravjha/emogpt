@@ -9,14 +9,6 @@
   height: 80vh;
 }
 
-.chat-header {
-  background-color: #10a37f;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  font-size: 1.5em;
-}
-
 .chat-messages {
   flex: 1;
   padding: 20px;
@@ -89,4 +81,157 @@
 
 .chat-footer a:hover {
   text-decoration: underline;
+}
+
+/* Happy Mood */
+.mood-happy .chat-header {
+  background-color: #f9d423;
+  color: #3e2723;
+}
+
+.mood-happy .chat-messages {
+  background-color: #fff9c4;
+}
+
+.mood-happy .message.user span {
+  background-color: #ffee58;
+}
+
+.mood-happy .message.bot span {
+  background-color: #ffeb3b;
+}
+
+/* Calm Mood */
+.mood-calm .chat-header {
+  background-color: #4fc3f7;
+  color: #003c8f;
+}
+
+.mood-calm .chat-messages {
+  background-color: #e1f5fe;
+}
+
+.mood-calm .message.user span {
+  background-color: #81d4fa;
+}
+
+.mood-calm .message.bot span {
+  background-color: #29b6f6;
+}
+
+/* Energetic Mood */
+.mood-energetic .chat-header {
+  background-color: #ff5722;
+  color: #ffffff;
+}
+
+.mood-energetic .chat-messages {
+  background-color: #ffe0b2;
+}
+
+.mood-energetic .message.user span {
+  background-color: #ff8a65;
+}
+
+.mood-energetic .message.bot span {
+  background-color: #ff7043;
+}
+
+/* Sad Mood */
+.mood-sad .chat-header {
+  background-color: #607d8b;
+  color: #ffffff;
+}
+
+.mood-sad .chat-messages {
+  background-color: #cfd8dc;
+}
+
+.mood-sad .message.user span {
+  background-color: #90a4ae;
+}
+
+.mood-sad .message.bot span {
+  background-color: #78909c;
+}
+
+/* Sassy Mood */
+.mood-sassy .chat-header {
+  background-color: #e91e63;
+  color: #ffffff;
+  font-style: italic;
+}
+
+.mood-sassy .chat-messages {
+  background-color: #f8bbd0;
+}
+
+.mood-sassy .message.user span {
+  background-color: #f06292;
+}
+
+.mood-sassy .message.bot span {
+  background-color: #ec407a;
+  font-style: italic;
+}
+
+/* Sarcastic Mood */
+.mood-sarcastic .chat-header {
+  background-color: #9c27b0;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.mood-sarcastic .chat-messages {
+  background-color: #ede7f6;
+}
+
+.mood-sarcastic .message.user span {
+  background-color: #d1c4e9;
+}
+
+.mood-sarcastic .message.bot span {
+  background-color: #ba68c8;
+  border: 2px dashed #7b1fa2;
+}
+
+/* Funny Mood */
+.mood-funny .chat-header {
+  background-color: #ff9800;
+  color: #ffffff;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.mood-funny .chat-messages {
+  background-color: #ffe0b2;
+}
+
+.mood-funny .message.user span {
+  background-color: #ffd54f;
+}
+
+.mood-funny .message.bot span {
+  background-color: #ffb74d;
+  border: 2px dotted #ef6c00;
+}
+
+.chat-header {
+  background-color: #10a37f;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.mood-emoji {
+  font-size: 2em;
+}
+
+.mood-description {
+  font-size: 1.2em;
+  font-weight: bold;
 }

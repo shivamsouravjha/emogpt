@@ -16,19 +16,22 @@ import (
 
 type PromptBuilder struct {
 	UserInput string
+	Mood      string
 }
 
-func NewPromptBuilder(UserInput string) (*PromptBuilder, error) {
+func NewPromptBuilder(UserInput, mood string) (*PromptBuilder, error) {
+	mood = strings.Split(mood, "-")[1]
 	promptBuilder := &PromptBuilder{
 		UserInput: UserInput,
+		Mood:      mood,
 	}
 	return promptBuilder, nil
 }
 func (pb *PromptBuilder) BuildPrompt(file string) (*types.Prompt, error) {
 	variables := map[string]interface{}{
 		"user_input": pb.UserInput,
+		"mood":       pb.Mood,
 	}
-
 	settings := GetSettings()
 
 	prompt := &types.Prompt{}
