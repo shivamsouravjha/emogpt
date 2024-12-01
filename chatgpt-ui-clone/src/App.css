@@ -74,3 +74,19 @@
 .chat-input button:hover {
   background-color: #0e8c6f;
 }
+
+.chat-footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.chat-footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.chat-footer a:hover {
+  text-decoration: underline;
+}

@@ -20,13 +20,13 @@ function App() {
           message: userMessage,
         });
 
-        setMessages(prevMessages => [
+        setMessages((prevMessages) => [
           ...prevMessages,
           { sender: 'bot', text: response.data.message },
         ]);
       } catch (error) {
         console.error('Error fetching the response:', error);
-        setMessages(prevMessages => [
+        setMessages((prevMessages) => [
           ...prevMessages,
           { sender: 'bot', text: 'Oops! Something went wrong. 🚧' },
         ]);
@@ -60,6 +60,27 @@ function App() {
         />
         <button type="submit">Send 🚀</button>
       </form>
+      <div className="chat-footer">
+        <p>
+          Built by{' '}
+          <a
+            href="https://x.com/ShivamSouravJha"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @ShivamSouravJha
+          </a>
+          |   Funded by{' '}
+          <a
+            href="https://x.com/sonichigo1219"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @sonichigo1219
+          </a>{' '}
+
+        </p>
+      </div>
     </div>
   );
 }
