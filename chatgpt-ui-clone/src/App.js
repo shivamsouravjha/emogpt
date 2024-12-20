@@ -43,7 +43,7 @@ function App() {
       setLoading(true);
 
       try {
-        const response = await axios.post('https://emogpt.onrender.com/api/sendMessage', {
+        const response = await axios.post('https://emogpt-de4d.onrender.com/api/sendMessage', {
           message: userMessage,
           mood: mood,
         });
