@@ -44,20 +44,11 @@ func GenerateChat(ctx context.Context, prompt types.Prompt) (string, error) {
 	default:
 	}
 
-	select {
-	case <-ctx.Done():
-		err := ctx.Err()
-		zap.L().Error("Context done", zap.Error(err))
-		return "", err
-	default:
-	}
-
 	chat, err := unmarshalYaml(response)
 	if err != nil {
 		zap.L().Error("Error unmarshalling yaml", zap.Error(err))
 		return "", err
 	}
-
 	select {
 	case <-ctx.Done():
 		err := ctx.Err()

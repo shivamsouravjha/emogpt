@@ -12,6 +12,7 @@ func Routes(r *gin.Engine) {
 
 	{
 		v1.POST("/sendMessage", controllers.GptController.SendMessage)
+		v1.POST("/sendAstroMessage", controllers.AstroController.SendMessage)
 		v1.GET("/keepServerRunning", controllers.HealthController.IsRunning)
 	}
 }
