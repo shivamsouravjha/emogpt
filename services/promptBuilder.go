@@ -114,16 +114,20 @@ type SingletonSettings struct {
 	viper *viper.Viper
 }
 
-var instance *SingletonSettings
-var once sync.Once
-
 //go:embed *.toml
 var settings embed.FS
 
+var (
+	onceEmo     sync.Once
+	instanceEmo *SingletonSettings
+
+	onceAstro     sync.Once
+	instanceAstro *SingletonSettings
+)
+
 // NewSingletonSettings initializes the singleton settings instance
 func NewSingletonSettings() *SingletonSettings {
-	once.Do(func() {
-
+	onceEmo.Do(func() {
 		settingsFiles := []string{
 			"emo_gpt.toml",
 		}
@@ -141,15 +145,15 @@ func NewSingletonSettings() *SingletonSettings {
 			}
 		}
 
-		instance = &SingletonSettings{
+		instanceEmo = &SingletonSettings{
 			viper: v,
 		}
 	})
-	return instance
+	return instanceEmo
 }
 
 func NewAstroSingletonSettings() *SingletonSettings {
-	once.Do(func() {
+	onceAstro.Do(func() {
 
 		settingsFiles := []string{
 			"astro_gpt.toml",
@@ -168,11 +172,11 @@ func NewAstroSingletonSettings() *SingletonSettings {
 			}
 		}
 
-		instance = &SingletonSettings{
+		instanceAstro = &SingletonSettings{
 			viper: v,
 		}
 	})
-	return instance
+	return instanceAstro
 }
 
 // GetSettings returns the singleton settings instance
