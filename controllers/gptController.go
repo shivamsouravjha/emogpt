@@ -32,5 +32,5 @@ func (s *gptController) SendMessage(ctx *gin.Context) {
 
 	prompt, _ := promptBuilder.BuildPrompt("meta")
 	av, _ := helpers.GenerateChat(ctx, *prompt)
-	ctx.JSON(200, gin.H{"message": av})
+	ctx.JSON(200, gin.H{"message": av.Response})
 }

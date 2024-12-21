@@ -15,14 +15,14 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-func GenerateChat(ctx context.Context, prompt types.Prompt) (string, error) {
+func GenerateChat(ctx context.Context, prompt types.Prompt) (Response, error) {
 	fmt.Println("Generating chat...")
 
 	select {
 	case <-ctx.Done():
 		err := ctx.Err()
 		zap.L().Error("Context done", zap.Error(err))
-		return "", err
+		return Response{}, err
 	default:
 	}
 
@@ -33,27 +33,27 @@ func GenerateChat(ctx context.Context, prompt types.Prompt) (string, error) {
 	response, err := CallAi(ctx, CompletionParams{}, aiRequest)
 	if err != nil {
 		zap.L().Error("Error calling AI", zap.Error(err))
-		return "", err
+		return Response{}, err
 	}
 
 	select {
 	case <-ctx.Done():
 		err := ctx.Err()
 		zap.L().Error("Context done", zap.Error(err))
-		return "", err
+		return Response{}, err
 	default:
 	}
 
 	chat, err := unmarshalYaml(response)
 	if err != nil {
 		zap.L().Error("Error unmarshalling yaml", zap.Error(err))
-		return "", err
+		return Response{}, err
 	}
 	select {
 	case <-ctx.Done():
 		err := ctx.Err()
 		zap.L().Error("Context done", zap.Error(err))
-		return "", err
+		return Response{}, err
 	default:
 	}
 
@@ -62,18 +62,19 @@ func GenerateChat(ctx context.Context, prompt types.Prompt) (string, error) {
 
 type Response struct {
 	Response string `yaml:"response"`
+	Zodiac   string `yaml:"zodiac"`
 }
 
-func unmarshalYaml(yamlStr string) (string, error) {
+func unmarshalYaml(yamlStr string) (Response, error) {
 	yamlStr = strings.TrimSpace(yamlStr)
 	yamlStr = strings.TrimPrefix(yamlStr, "```yaml")
 	yamlStr = strings.TrimSuffix(yamlStr, "```")
 	var data Response
 	err := yaml.Unmarshal([]byte(yamlStr), &data)
 	if err != nil {
-		return "", fmt.Errorf("error unmarshaling yaml: %s", err)
+		return Response{}, fmt.Errorf("error unmarshaling yaml: %s", err)
 	}
-	return data.Response, nil
+	return data, nil
 }
 
 type AIResponse struct {

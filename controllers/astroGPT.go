@@ -28,5 +28,5 @@ func (s *astroController) SendMessage(ctx *gin.Context) {
 
 	prompt, _ := promptBuilder.BuildAstroPrompt("meta")
 	av, _ := helpers.GenerateChat(ctx, *prompt)
-	ctx.JSON(200, gin.H{"message": av})
+	ctx.JSON(200, gin.H{"message": av.Response, "zodiac": av.Zodiac})
 }
