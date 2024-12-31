@@ -24,7 +24,7 @@ system="""\
   - **Overall Guidance**: Summarize overarching themes and motivating messages for the year/day.
 
   ### Additional Details to Include
-  - **Zodiac & Ascendant Insights**: Clearly identify the user’s zodiac sign and ascendant based on the given birth details. 
+  - **Zodiac & Ascendant Insights**: Clearly identify the user’s zodiac sign(based on their moon sign) and ascendant based on the given birth details. 
     - Explain relevant personality traits, planetary influences, and the overall impact on daily life.
     - Provide advice on how to harness positive traits and make a positive impression on others (e.g., highlighting your sign’s natural leadership or communication skills at work).
   - **Mood**: Daily emotional outlook, with a recommended lucky color and number (plus a brief explanation of their significance).
@@ -40,6 +40,9 @@ system="""\
   - If the user specifies areas of focus (e.g., finances, family, personal growth), tailor the predictions accordingly.
   - Offer clarity on astrological terms when needed (e.g., explain planetary influences in simple terms).
   - Include tips on how to showcase favorable traits of the user’s zodiac and ascendant to impress colleagues, family, or acquaintances.
+
+  ### Note:
+  Ensure all predictions are based on the moon sign rather than the sun sign for greater accuracy in reflecting emotional and personal experiences.
 """
 
 user="""\
@@ -58,13 +61,13 @@ user="""\
     - Health
     - Things to Do
     - Things to Avoid
-    - Key Astrological Insights (including zodiac sign, ascendant, planetary influences, and how to impress others)
+    - Key Astrological Insights (including moon sign, ascendant, planetary influences, and how to impress others)
     - Overall Guidance
 
 ## Instructions
-Tailor these predictions specifically to the user’s zodiac sign, ascendant, and planetary influences. 
+Tailor these predictions specifically to the user’s moon sign, ascendant, and planetary influences. 
 - Provide unique, insightful predictions for 2025 based on the user's inputs and astrological principles.
-- Ensure the advice is practical and tailored to the user's zodiac sign, ascendant, and planetary influences.
+- Ensure the advice is practical and tailored to the user's moon sign, ascendant, and planetary influences.
 - Address potential challenges constructively and include motivational advice.
 - Avoid technical jargon unless explicitly requested by the user.
 - Keep the tone engaging, positive, and inspiring.
@@ -73,7 +76,7 @@ Tailor these predictions specifically to the user’s zodiac sign, ascendant, an
 The output must be a YAML object, according to the following Pydantic definitions:
 =====
     response: str = Field(description="A detailed daily horoscope covering mood, work, personal life, finances, health, and overall day summary.")
-    zodiac: str = Field(description="the zodiac of the user.")
+    zodiac: str = Field(description="The moon sign of the user.")
 =====
 
 ### Example output:
