@@ -16,7 +16,7 @@ import (
 )
 
 func GenerateChat(ctx context.Context, prompt types.Prompt) (Response, error) {
-	fmt.Println("Generating chat...")
+	fmt.Println("Generating chats...")
 
 	select {
 	case <-ctx.Done():
